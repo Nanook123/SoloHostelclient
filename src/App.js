@@ -13,8 +13,8 @@ function App() {
 const [postData, setPostData] = useState([])
 const [user, setUser] = useState(null)
 
-useEffect(() => {
-  fetch("/hostel_posts")
+useEffect((id) => {
+  fetch(`/hostels/${id}`)
   .then(res => res.json())
   .then(data => setPostData(data))
 }, [])
@@ -34,7 +34,7 @@ useEffect(() => {
 if(!user) return <Login onLogin={setUser} />
 
 const makePost = post => {
-  fetch('/hostel_posts', {
+  fetch('/hostels', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(post)
@@ -46,6 +46,16 @@ const makePost = post => {
     ])
   })
 } 
+const handleDeletePost = id => {
+  fetch(`/hostels/${id}`,{
+    method: 'DELETE'
+  }).then(() => {
+    const deletePost = postData.filter(post => post.id !== id)
+  setPostData(deletePost)
+  })
+}
+
+
 
 
   return (
@@ -53,7 +63,7 @@ const makePost = post => {
       <Header user={user} setUser={setUser} />
       <Switch>
       <Route path="/MyHostelPostsContainer">
-      <MyHostelPostsContainer makePost={makePost} postData={postData} user={user} />
+      <MyHostelPostsContainer makePost={makePost} postData={postData} user={user} setPostData={setPostData} handleDeletePost={handleDeletePost} />
       </Route>
       <Route path="/">
       <Home />

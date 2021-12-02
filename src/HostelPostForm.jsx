@@ -1,10 +1,10 @@
 import React from 'react'
 import {useState} from 'react'
 
-export default function HostelPostForm({makePost, user}) {
+export default function HostelPostForm({makePost, postData, user}) {
     const [newPost, setNewPost] = useState({
-        "user_id":user,
-        "Hostel_name": '',
+        "user_id": user,
+        "hostel_name": '',
         'image':'',
         'event_review':'',
         'social_review':'',
@@ -41,7 +41,7 @@ export default function HostelPostForm({makePost, user}) {
                 
                 <div>
                     <form onSubmit={handleSubmit}>
-            <input placeholder="Hostel name" type="text" name="Hostel_name" value={newPost.Hostel_name} onChange={handleChange} />
+            <input placeholder="Hostel name" type="text" name="hostel_name" value={newPost.hostel_name} onChange={handleChange} />
             <input placeholder="image" type="text" name="image" value={newPost.image} onChange={handleChange} />
             <input placeholder="How would you rate the events ?" type="text" name="event_review" value={newPost.event_review} onChange={handleChange} />
             <input placeholder="Was it easy to make friends?" type="text" name="social_review" value={newPost.social_review} onChange={handleChange} />
