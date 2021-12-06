@@ -33,7 +33,6 @@ useEffect(() => {
 
   }, [])
 
-  
 useEffect((id) => {
   fetch(`/hostels`)
   .then(res => res.json())
@@ -92,7 +91,17 @@ const handleDeletePost = id => {
   })
 }
 
+const handleDeleteFriend = id => {
+  fetch(`/removefriend/${id}`,{
+    method: 'DELETE'
+  }).then(() => {
+    const deleteFriend = friend.filter(post => post.id !== id)
+    setFriendDat(deleteFriend)
+  })
+}
 
+
+const usernames = alluser.map
 
 
 
@@ -108,7 +117,7 @@ const handleDeletePost = id => {
       <FriendsHostelPostsContainer friend={friend} postData={postData} user={user} />
       </Route>
       <Route path="/">
-      <Home user={user} alluser={alluser} friend={friend}/>
+      <Home user={user} alluser={alluser} setPostData={setPostData} handleDeleteFriend={handleDeleteFriend}/>
       </Route>
       </Switch>
     </div>

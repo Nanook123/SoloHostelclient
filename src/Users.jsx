@@ -1,12 +1,14 @@
 import React from 'react'
 import {useState} from 'react'
 
-export default function Users({username, user,usernameid, friend}) {
+export default function Users({username, user,usernameid, friend, setPostData, handleDeleteFriend, friendid}) {
 
     const [friendData, setFriendData] =useState({
         "user_id": user,
         "friend_id": usernameid
     })
+
+    const [follow, setFollow] = useState(true)
 
     const submitFriends = friendDat => {
       fetch('/friendlist', {
@@ -23,14 +25,25 @@ export default function Users({username, user,usernameid, friend}) {
     } 
     function handleFriends(e){
       e.preventDefault()
-      console.log(friendData)
+      setFollow(!true)
+      console.log(friend)
       submitFriends(friendData)
+     
+        fetch(`/hostels`)
+        .then(res => res.json())
+        .then(data => setPostData(data))
+      
       
     }
 
+  
+
+
+
+
     return (
-        <div>
-            <button onClick={handleFriends}>Add as a friend :  {username}</button>
+        <div>{follow ? 
+            <button onClick={handleFriends}>Add as a friend :  {username}</button> : <button onClick={()  => handleDeleteFriend(setFollow(!false))}>Remove friend :  {username}</button>}
         </div>
     )
 }

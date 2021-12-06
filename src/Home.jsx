@@ -3,7 +3,7 @@ import {useState} from 'react'
 import Users from './Users'
 
 
-export default function Home({alluser, user, friend,hostelrefresh}) {
+export default function Home({alluser, user,setPostData, handleDeleteFriend, friendid }) {
 const [friendquery, setFriendQuery] = useState('')
 
     return (
@@ -18,7 +18,7 @@ const [friendquery, setFriendQuery] = useState('')
                     } else if (postDat.username.toLowerCase().includes(friendquery.toLowerCase())) {
                         return postDat
                     }
-                }).map(postDat => <Users  friend={alluser.id} user={user.id} username={postDat.username}  usernameid={postDat.id} key={postDat.id} />
+                }).map(postDat => <Users user={user.id} username={postDat.username}  usernameid={postDat.id} key={postDat.id} setPostData={setPostData} handleDeleteFriend={handleDeleteFriend} friendid={friendid}  />
                     )
                 }
                 
