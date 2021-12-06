@@ -4,7 +4,7 @@ import SignUpForm from './Auth/SignUpForm'
 
 
 
-const Login = ({onLogin}) => {
+const Login = ({onLogin, user}) => {
 
     const [showLogin, setShowLogin] = useState(true)
 
@@ -28,7 +28,7 @@ const Login = ({onLogin}) => {
                     </div>
                         ) : (
                     <div className='card-back'>
-                        <SignUpForm onLogin={onLogin}/>
+                        <SignUpForm user={user} onLogin={onLogin}/>
                         <div btn-class>
                             <button onClick={() => { 
                                 setShowLogin(true);

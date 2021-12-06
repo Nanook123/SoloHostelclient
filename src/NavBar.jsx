@@ -8,6 +8,7 @@ export default function NavBar() {
 
         <NavLink to="/">Home</NavLink>
         <NavLink to="/MyHostelPostsContainer">MyHostelPosts</NavLink>
+        <NavLink to="/FriendsHostelPostsContainer">Friends Posts</NavLink>
 
         </nav>
     )

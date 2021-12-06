@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
-const SignUpForm = ({ onLogin }) => {
+const SignUpForm = ({ onLogin, user }) => {
     const [signup, setSignup] = useState({
         username: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        
     })
 
 
@@ -43,8 +44,10 @@ const handleSubmit = e => {
 
 
 
+
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
             <h2>Sign Up</h2>
             <input placeholder='Username' type='text' id='username'
                 name="username" autoComplete='off' value={signup.username}

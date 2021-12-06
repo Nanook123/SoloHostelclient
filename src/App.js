@@ -5,19 +5,56 @@ import Home from './Home'
 import Login from './Login'
 import Header from './Header'
 import {Switch, Route} from 'react-router-dom'
-import NavBar from './NavBar'
-import MyHostelPosts from './MyHostelPosts'
+import FriendsHostelPostsContainer from './FriendsHostelPostsContainer'
+
 
 function App() {
 
 const [postData, setPostData] = useState([])
 const [user, setUser] = useState(null)
+const [alluser, setAllUser] =useState([])
+const [friend, setFriendDat] = useState([])
+const [myHostels, setMyHostels] = useState([])
+
+
 
 useEffect((id) => {
-  fetch(`/hostels/${id}`)
+  fetch('/hostels/mine')
+  .then(res => res.json())
+  .then(data => setMyHostels(data))
+}, [])
+
+
+
+useEffect(() => {
+    fetch("/friend")
+    .then(res => res.json())  
+    .then(data => setFriendDat(data))
+
+  }, [])
+
+  
+useEffect((id) => {
+  fetch(`/hostels`)
   .then(res => res.json())
   .then(data => setPostData(data))
 }, [])
+
+
+
+useEffect(() => {
+  fetch('/users', {
+    credentials: 'include'
+  })
+  .then(res => {
+
+    if (res.ok) {
+      res.json().then(allUser => setAllUser(allUser))
+    }
+  })
+},[])
+
+
 
 useEffect(() => {
   fetch('/me', {
@@ -31,7 +68,7 @@ useEffect(() => {
   })
 },[])
 
-if(!user) return <Login onLogin={setUser} />
+if(!user) return <Login user={user} onLogin={setUser} />
 
 const makePost = post => {
   fetch('/hostels', {
@@ -41,8 +78,8 @@ const makePost = post => {
   })
   .then(res => res.json())
   .then(post => {
-    setPostData([
-      ...postData, post
+    setMyHostels([
+      ...myHostels, post
     ])
   })
 } 
@@ -50,10 +87,12 @@ const handleDeletePost = id => {
   fetch(`/hostels/${id}`,{
     method: 'DELETE'
   }).then(() => {
-    const deletePost = postData.filter(post => post.id !== id)
-  setPostData(deletePost)
+    const deletePost = myHostels.filter(post => post.id !== id)
+    setMyHostels(deletePost)
   })
 }
+
+
 
 
 
@@ -63,10 +102,13 @@ const handleDeletePost = id => {
       <Header user={user} setUser={setUser} />
       <Switch>
       <Route path="/MyHostelPostsContainer">
-      <MyHostelPostsContainer makePost={makePost} postData={postData} user={user} setPostData={setPostData} handleDeletePost={handleDeletePost} />
+      <MyHostelPostsContainer myHostels={myHostels} makePost={makePost} postData={postData} user={user} setPostData={setPostData} handleDeletePost={handleDeletePost} />
+      </Route>
+      <Route path="/FriendsHostelPostsContainer">
+      <FriendsHostelPostsContainer friend={friend} postData={postData} user={user} />
       </Route>
       <Route path="/">
-      <Home />
+      <Home user={user} alluser={alluser} friend={friend}/>
       </Route>
       </Switch>
     </div>

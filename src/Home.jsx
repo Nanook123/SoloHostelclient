@@ -1,11 +1,29 @@
 import React from 'react'
-import NavBar from './NavBar'
+import {useState} from 'react'
+import Users from './Users'
 
 
-export default function Home() {
+export default function Home({alluser, user, friend,hostelrefresh}) {
+const [friendquery, setFriendQuery] = useState('')
+
     return (
         <div>
             Home
-        </div>
-    )
-}
+            <div>
+            <input placeholder="Search for friends" onChange={e => setFriendQuery(e.target.value)} />
+            {
+                alluser.filter(postDat => {
+                    if (friendquery === '') {
+                        return postDat
+                    } else if (postDat.username.toLowerCase().includes(friendquery.toLowerCase())) {
+                        return postDat
+                    }
+                }).map(postDat => <Users  friend={alluser.id} user={user.id} username={postDat.username}  usernameid={postDat.id} key={postDat.id} />
+                    )
+                }
+                
+            </div>
+            </div>
+        )
+    }
+    
