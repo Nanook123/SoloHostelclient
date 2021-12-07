@@ -1,9 +1,10 @@
 import React from 'react'
 import {useState} from 'react'
 
-export default function HostelPostForm({makePost, postData, user}) {
+export default function HostelPostForm({makePost, postData, user,username}) {
     const [newPost, setNewPost] = useState({
         "user_id": user,
+        "username": username,
         "hostel_name": '',
         'image':'',
         'event_review':'',

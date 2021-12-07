@@ -5,6 +5,7 @@ import {useState} from 'react'
 
 
 
+
 export default function MyHostelPostsContainer({postData, user, makePost, handleDeletePost, myHostels}) {
   
 
@@ -20,9 +21,11 @@ export default function MyHostelPostsContainer({postData, user, makePost, handle
     return (
         <div>
             
-            <HostelPostForm makePost={makePost} postData={postData} user={user.id}  /> 
+            <HostelPostForm makePost={makePost} postData={postData} user={user.id} username={user.username}  /> 
             
             <input placeholder="Search by country" onChange={e=> setQuery(e.target.value)} />
+            <div>
+            
             {
                 myHostels.filter(post => {
                     if (query === '') {
@@ -33,7 +36,7 @@ export default function MyHostelPostsContainer({postData, user, makePost, handle
                 }).map(post => <MyHostelPosts user_id={post.user_id} key={post.id} hostel_name={post.hostel_name} image={post.image} rating={post.rating} event_review={post.event_review} social_review={post.social_review} additional_comment={post.additional_comment} currently_staying={post.currently_staying} country={post.country} id={post.id}  postData={postData} handleDeletePost={handleDeletePost}  />
                 )
             }
-            
+            </div>
         </div>
     )
 }

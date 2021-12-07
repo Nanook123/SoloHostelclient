@@ -1,11 +1,11 @@
 
 import {useState, useEffect} from 'react'
-import MyHostelPostsContainer from './MyHostelPostsContainer'
-import Home from './Home'
-import Login from './Login'
-import Header from './Header'
+import MyHostelPostsContainer from './Components/MyHostelPostsContainer'
+import Home from './Components/Home'
+import Login from './Components/Login'
+import Header from './Components/Header'
 import {Switch, Route} from 'react-router-dom'
-import FriendsHostelPostsContainer from './FriendsHostelPostsContainer'
+import FriendsHostelPostsContainer from './Components/FriendsHostelPostsContainer'
 
 
 function App() {
@@ -101,7 +101,7 @@ const handleDeleteFriend = id => {
 }
 
 
-const usernames = alluser.map
+
 
 
 
@@ -114,7 +114,7 @@ const usernames = alluser.map
       <MyHostelPostsContainer myHostels={myHostels} makePost={makePost} postData={postData} user={user} setPostData={setPostData} handleDeletePost={handleDeletePost} />
       </Route>
       <Route path="/FriendsHostelPostsContainer">
-      <FriendsHostelPostsContainer friend={friend} postData={postData} user={user} />
+      <FriendsHostelPostsContainer friend={friend} postData={postData} user={user} alluser={alluser} />
       </Route>
       <Route path="/">
       <Home user={user} alluser={alluser} setPostData={setPostData} handleDeleteFriend={handleDeleteFriend}/>
