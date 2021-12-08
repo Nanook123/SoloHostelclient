@@ -22,7 +22,7 @@ const handleChange = e => {
 }
 
 const handleSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     setErrors([]);
     setIsLoading(true);
     fetch("/signup", {

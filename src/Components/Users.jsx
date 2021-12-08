@@ -63,9 +63,9 @@ export default function Users({username, user,usernameid, friend, setPostData, h
           // (friends && friends.filter(friend => friend.friend_id == usernameid)[0] !== undefined) ?
           myFriend ?
           // <button onClick={()  => removeFriend(friends.filter(friend => friend.friend_id == usernameid)[0].id)}>Remove friend :  {username} ({usernameid}) </button>
-          <button onClick={()  => removeFriend(myFriend.id)}>Remove friend :  {username} ({usernameid}) </button>
+          <button className="Friendbtn" onClick={()  => removeFriend(myFriend.id)}>Remove friend :  {username} </button>
           :
-          <button onClick={addFriend}>Add as a friend : {username} </button> 
+          <button className="Friendbtnadd" onClick={addFriend}>Add as a friend : {username} </button> 
           }
         </div>
     )

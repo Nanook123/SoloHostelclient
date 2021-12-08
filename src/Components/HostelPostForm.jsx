@@ -48,7 +48,7 @@ export default function HostelPostForm({makePost, postData, user,username}) {
     return (
         <div>
             <button className="form-show-btn" onClick={() => setShowForm(!showForm)}>
-                {showForm ? "Hide" : "Hostel Poster"}
+                {showForm ? "Hide Poster" : "Hostel Poster"}
             </button>
             {showForm ? (
                 

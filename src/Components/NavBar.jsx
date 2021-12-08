@@ -14,6 +14,7 @@ export default function NavBar() {
     const showSidebar = () => setSidebar(!sidebar)
     return (
         <>
+        
         <IconContext.Provider value={{color: 'black'}}>
         <div className='navbar'>
         <Link to='#' className='menu-bars'>

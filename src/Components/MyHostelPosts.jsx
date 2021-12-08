@@ -16,17 +16,17 @@ const handleShow = () => setShow(!show)
             <h2>{country}</h2>
             <img className="imagesize" src={image} alt={image} onClick={handleShow} />
            
-           {show ? (<div classname="contentwrapper">
-            <h1 className="rating">rating<ProgressCircle percentage={rating}
-            colorBackground="#f0f0f0"
+           {show ? (<div className="contentwrapper">
+            <h1 className="rating"><ProgressCircle percentage={rating}
+            colorBackground="#2432f052"
             transparency="true"
-            size={15}
+            size={20}
             />
 			</h1>
             <h2 >Events - {event_review}</h2>
             <h2>Sociability -  {social_review}</h2>
             <h2>Additional comments - {additional_comment}</h2>
-            <h3>Are you currently staying here ?{currently_staying}</h3>
+           
             <button onClick={ () => handleDeletePost(id)}>Delete!</button>
            </div> ) : ""}
         </div>

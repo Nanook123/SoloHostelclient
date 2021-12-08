@@ -21,7 +21,7 @@ const LoginForm = ({ onLogin }) => {
     }
 
     const handleSubmit = e => {
-        // e.preventDefault();
+        e.preventDefault();
         setIsLoading(true);
         fetch("/login", {
             method: 'POST',

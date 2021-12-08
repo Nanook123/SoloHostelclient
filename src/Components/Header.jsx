@@ -18,9 +18,10 @@ export default function Header({user, setUser}) {
 
     return (
         <div className='header'>
-            <h1>SoloHostel!</h1>
-            <NavBar />
-            <button onClick={handleLogout}>Logout</button>
+            <NavBar /> 
+            <button className='logoutbtn' onClick={handleLogout}>Logout</button>
+            <h1 className="Title">Hostolo</h1>
+           
 
 
         </div>

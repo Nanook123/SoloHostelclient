@@ -1,6 +1,7 @@
 .wrappercontainer {
   display: inline-flex;
   justify-content: wrap;
+  padding: 0.5em 0.5em
 
 }
 
@@ -8,12 +9,13 @@
 
 .wrapper {
 
-  margin: 10px;
+  margin: 20px;
   border: 3px solid #333;
   background-color: #c0c3eb;
   font-size: 12px;
   object-fit: contain;
   text-align: center;
+  padding: 1em;
 
 }
 
@@ -32,8 +34,9 @@
 .contentwrapper {
   margin: 10px;
   border: 3px solid #333;
-  background-color: #c0c3eb;
+  background-color: #2432f052;
   font-size: 12px;
   object-fit: contain;
   text-align: center;
 }
+

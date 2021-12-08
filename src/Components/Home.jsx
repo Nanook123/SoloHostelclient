@@ -8,9 +8,9 @@ const [friendquery, setFriendQuery] = useState('')
 
     return (
         <div>
-            Home
+            <h1 className="friendtitle">Friends</h1>
             <div>
-            <input placeholder="Search for friends" onChange={e => setFriendQuery(e.target.value)} />
+            <input className="searchbar" placeholder="Search for friends" onChange={e => setFriendQuery(e.target.value)} />
             { !friends ? <p>...loading friends...</p> : 
                 alluser.filter(postDat => {
                     if (friendquery === '') {

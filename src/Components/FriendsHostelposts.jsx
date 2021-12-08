@@ -18,15 +18,15 @@ export default function FriendsHostelposts({hostel_name, image, rating, event_re
                
                {show ? (<div className="contentwrapper">
                 <h1 className="rating">rating<ProgressCircle percentage={rating}
-                colorBackground="#f0f0f0"
-                transparency="true"
-                size={15}
+            colorBackground="#2432f052"
+            transparency="true"
+            size={20}
                 />
                 </h1>
                 <h2>Events - {event_review}</h2>
                 <h2>Sociability -  {social_review}</h2>
                 <h2>Additional comments - {additional_comment}</h2>
-                <h3>Are you currently staying here ?{currently_staying}</h3>
+                
                
                </div> ) : ""}
             </div>

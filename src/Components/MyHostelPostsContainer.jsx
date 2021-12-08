@@ -21,10 +21,10 @@ export default function MyHostelPostsContainer({postData, user, makePost, handle
 
     return (
         <div>
-            
+             
             <HostelPostForm makePost={makePost} postData={postData} user={user.id} username={user.username}  /> 
-            
-            <input placeholder="Search by country" onChange={e=> setQuery(e.target.value)} />
+            <input className="searchbar-myhostel" placeholder="Search by country" onChange={e=> setQuery(e.target.value)} />
+           
             <div>
             
             {
