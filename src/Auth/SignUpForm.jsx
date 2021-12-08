@@ -22,7 +22,7 @@ const handleChange = e => {
 }
 
 const handleSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     setErrors([]);
     setIsLoading(true);
     fetch("/signup", {
@@ -48,15 +48,15 @@ const handleSubmit = e => {
 
     return (
         <form onSubmit={handleSubmit} >
-            <h2>Sign Up</h2>
-            <input placeholder='Username' type='text' id='username'
+            <h2 className='signuph2'>Sign Up</h2>
+            <input className='input-box' placeholder='Username' type='text' id='username'
                 name="username" autoComplete='off' value={signup.username}
                 onChange={handleChange} />
 
-            <input placeholder='Password' type='password' id='password' name='password'
+            <input className='input-box' placeholder='Password' type='password' id='password' name='password'
                 autoComplete='current-password' value={signup.password} onChange={handleChange} />
 
-                <input placeholder = 'Password Confirmation' type = 'password'
+                <input className='input-box' placeholder = 'Password Confirmation' type = 'password'
                 name = "password_confirmation" id ='password_confirmation' autoComplete='current-password' value={signup.password_confirmation} onChange={handleChange} />
                 <button type='submit'>
                     {isloading ? "loading...." : "Sign Up"}

@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import './login.css'
+
+
 
 
 const LoginForm = ({ onLogin }) => {
@@ -18,7 +21,7 @@ const LoginForm = ({ onLogin }) => {
     }
 
     const handleSubmit = e => {
-        e.preventDefault();
+        // e.preventDefault();
         setIsLoading(true);
         fetch("/login", {
             method: 'POST',
@@ -43,12 +46,15 @@ const LoginForm = ({ onLogin }) => {
 
 
     return (
+
+    
+        
         <form onSubmit={handleSubmit}>
-            <h2>Login!</h2>
-            <input placeholder='Your Username' type='text' id='username'
+            <h2 className="loginh2">Login</h2>
+            <input className='input-box' placeholder='Your Username' type='text' id='username'
             name='username' autoComplete='off' value={login.username}
             onChange={handleChange} />
-            <input placeholder='Password' type='password' id='password'
+            <input className='input-box' placeholder='Password' type='password' id='password'
             name='password' autoComplete='current-password' value={login.password}
             onChange={handleChange} />
             <button type='submit'>

@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import LoginForm from '../Auth/LoginForm'
 import SignUpForm from '../Auth/SignUpForm'
+import background from '../../src/background.mp4'
 
 
 
@@ -10,6 +11,11 @@ const Login = ({onLogin, user}) => {
 
     return (
         <>
+         <div className="video-container">
+            <video autoPlay loop muted>
+                <source src={background} type="video/mp4"/>
+            </video>
+            </div>
         <div className="auth-container">
             <div className='auth-card'>
                 <div className='inner-card'>

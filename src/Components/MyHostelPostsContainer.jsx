@@ -6,6 +6,7 @@ import {useState} from 'react'
 
 
 
+
 export default function MyHostelPostsContainer({postData, user, makePost, handleDeletePost, myHostels}) {
   
 

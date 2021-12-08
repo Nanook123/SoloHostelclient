@@ -6,6 +6,7 @@ import Login from './Components/Login'
 import Header from './Components/Header'
 import {Switch, Route} from 'react-router-dom'
 import FriendsHostelPostsContainer from './Components/FriendsHostelPostsContainer'
+import './App.css';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 const [postData, setPostData] = useState([])
 const [user, setUser] = useState(null)
 const [alluser, setAllUser] =useState([])
-const [friend, setFriendDat] = useState([])
+const [friends, setFriends] = useState([])
 const [myHostels, setMyHostels] = useState([])
 
 
@@ -24,13 +25,10 @@ useEffect((id) => {
   .then(data => setMyHostels(data))
 }, [])
 
-
-
 useEffect(() => {
     fetch("/friend")
     .then(res => res.json())  
-    .then(data => setFriendDat(data))
-
+    .then(data => setFriends(data))
   }, [])
 
 useEffect((id) => {
@@ -38,8 +36,6 @@ useEffect((id) => {
   .then(res => res.json())
   .then(data => setPostData(data))
 }, [])
-
-
 
 useEffect(() => {
   fetch('/users', {
@@ -52,8 +48,6 @@ useEffect(() => {
     }
   })
 },[])
-
-
 
 useEffect(() => {
   fetch('/me', {
@@ -92,12 +86,22 @@ const handleDeletePost = id => {
 }
 
 const handleDeleteFriend = id => {
+  console.log(id)
   fetch(`/removefriend/${id}`,{
     method: 'DELETE'
-  }).then(() => {
-    const deleteFriend = friend.filter(post => post.id !== id)
-    setFriendDat(deleteFriend)
+  }).then(res => {
+    if (res.ok) {
+      const friendsAfterDeletion = friends.filter(it => it.id !== id)
+      setFriends(friendsAfterDeletion)
+    }
   })
+}
+
+const handleAddedFriend = newFriendInfo => {
+  setFriends([
+    ...friends,
+    newFriendInfo
+  ])
 }
 
 
@@ -114,10 +118,10 @@ const handleDeleteFriend = id => {
       <MyHostelPostsContainer myHostels={myHostels} makePost={makePost} postData={postData} user={user} setPostData={setPostData} handleDeletePost={handleDeletePost} />
       </Route>
       <Route path="/FriendsHostelPostsContainer">
-      <FriendsHostelPostsContainer friend={friend} postData={postData} user={user} alluser={alluser} />
+      <FriendsHostelPostsContainer friends={friends} postData={postData} user={user} alluser={alluser} />
       </Route>
       <Route path="/">
-      <Home user={user} alluser={alluser} setPostData={setPostData} handleDeleteFriend={handleDeleteFriend}/>
+      <Home user={user} alluser={alluser} setPostData={setPostData} handleDeleteFriend={handleDeleteFriend} friends={friends} handleAddedFriend={handleAddedFriend}/>
       </Route>
       </Switch>
     </div>
